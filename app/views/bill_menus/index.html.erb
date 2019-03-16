@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bill Menus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Menu</th>
+      <th>Bill</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bill_menus.each do |bill_menu| %>
+      <tr>
+        <td><%= bill_menu.menu %></td>
+        <td><%= bill_menu.bill %></td>
+        <td><%= link_to 'Show', bill_menu %></td>
+        <td><%= link_to 'Edit', edit_bill_menu_path(bill_menu) %></td>
+        <td><%= link_to 'Destroy', bill_menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bill Menu', new_bill_menu_path %>

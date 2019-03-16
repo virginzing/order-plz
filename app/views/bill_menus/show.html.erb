@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Menu:</strong>
+  <%= @bill_menu.menu %>
+</p>
+
+<p>
+  <strong>Bill:</strong>
+  <%= @bill_menu.bill %>
+</p>
+
+<%= link_to 'Edit', edit_bill_menu_path(@bill_menu) %> |
+<%= link_to 'Back', bill_menus_path %>
