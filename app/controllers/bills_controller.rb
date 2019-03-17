@@ -4,7 +4,7 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
   def index
-    @bills = Bill.all
+    @bills = Bill.all.select { |bill| bill.deliver_at >= DateTime.now }.reverse
   end
 
   # GET /bills/1
