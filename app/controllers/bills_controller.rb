@@ -24,7 +24,10 @@ class BillsController < ApplicationController
   # POST /bills
   # POST /bills.json
   def create
-    @bill = Bill.new(bill_params)
+    @bill = Bill.new(bill_params.except(:menus))
+    @bill.menus = bill_params[:menus].map do |param_menu|
+      Menu.find(param_menu[:id]).attributes.merge("quantity" => param_menu[:quantity])
+    end.to_json
 
     respond_to do |format|
       if @bill.save
@@ -69,6 +72,6 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params.require(:bill).permit(:name, :address, :phone, :restaurant_id, menu_ids: [])
+      params.require(:bill).permit(:name, :address, :phone, :restaurant_id, menus: [:id, :quantity])
     end
 end
