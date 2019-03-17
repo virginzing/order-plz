@@ -1,3 +1,3 @@
 json.bills do
-  json.array! @bills, partial: 'bills/bills', as: :bill
+  json.array! @bills, partial: 'bills/bill', as: :bill
 end
